@@ -1,0 +1,23 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<h1>Files#new</h1>
+<%=form_tag "", :method=>"POST", :multipart => true do %>
+File UUID:<input type="text" id="fid"/><br/>
+Version:<input type="text" id="version"/><br/>
+Digest:<%= text_field_tag "digest" %><br/>
+Editor:<%= text_field_tag "editor" %><br/>
+Note:<%= text_area_tag "note" %><br/>
+ChooseFile:<%= file_field_tag "file" %><br/>
+<input type="button" onclick="doSubmit()" value="Submit"/>
+<% end %>
+<script>
+function doSubmit() {
+  $("form").attr("action", $("#fid").val()+"/"+$("#version").val()).submit();
+}
+</script>
+</body>
+</html>
+
